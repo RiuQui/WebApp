@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Dashboard</h1>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>Section</th>
+                <th>Room</th>
+                <th>Teacher</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student rows will be added here dynamically -->
+        </tbody>
+    </table>
+
+    <h2>Add Student</h2>
+    <form id="studentForm">
+        <input type="text" id="studentName" placeholder="Student Name" required>
+        <input type="text" id="course" placeholder="Course" required>
+        <input type="text" id="section" placeholder="Section" required>
+        <input type="text" id="room" placeholder="Room" required>
+        <input type="text" id="teacher" placeholder="Teacher" required>
+        <button type="submit" class="button">Add Student</button>
+    </form>
+
+    <script>
+        const studentTable = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+        const studentForm = document.getElementById('studentForm');
+
+        studentForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            addStudent();
+        });
+
+        function addStudent() {
+            const studentName = document.getElementById('studentName').value;
+            const course = document.getElementById('course').value;
+            const section = document.getElementById('section').value;
+            const room = document.getElementById('room').value;
+            const teacher = document.getElementById('teacher').value;
+
+            const newRow = studentTable.insertRow();
+            newRow.innerHTML = `
+                    <td>${studentName}</td>
+                    <td>${course}</td>
+                    <td>${section}</td>
+                    <td>${room}</td>
+                    <td>${teacher}</td>
+                    <td>
+                        <button class="button" onclick="editStudent(this)">Edit</button>
+                        <button class="button" onclick="deleteStudent(this)">Delete</button>
+                    </td>
+                `;
+
+            studentForm.reset();
+        }
+
+        function editStudent(button) {
+            const row = button.parentElement.parentElement;
+            const cells = row.getElementsByTagName('td');
+
+            document.getElementById('studentName').value = cells[0].innerText;
+            document.getElementById('course').value = cells[1].innerText;
+            document.getElementById('section').value = cells[2].innerText;
+            document.getElementById('room').value = cells[3].innerText;
+            document.getElementById('teacher').value = cells[4].innerText;
+
+            deleteStudent(button); // Remove the row to allow for editing
+        }
+
+        function deleteStudent(button) {
+            const row = button.parentElement.parentElement;
+            studentTable.deleteRow(row.rowIndex - 1);
+        }
+    </script>
+
+</body>
+</html>
