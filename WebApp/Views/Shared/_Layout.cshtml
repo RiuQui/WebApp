@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] Duo</title>
+    <title>@ViewData["Title"] - Duo</title> <!-- Ensure title is set correctly -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/WebApp.styles.css" />
@@ -12,10 +12,11 @@
         /* Sidebar styles */
         body {
             display: flex;
+            margin: 0; /* Ensure no margin on body */
         }
 
         .sidebar {
-            height: 100%;
+            height: 100vh; /* Full height of the viewport */
             width: 250px; /* Width of the sidebar */
             position: fixed;
             top: 0;
@@ -63,11 +64,18 @@
     <div class="sidebar" id="sidebar">
         <nav class="nav flex-column">
             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            <a class="nav-link" asp-area="" asp-controller="Explorer" asp-action="Explorer">Students</a>
+            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Course">Course</a>
+            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Room">Room</a>
+            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Section">Section</a>
+            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Teacher">Teacher</a>
         </nav>
     </div>
 
     <div class="main-content">
+        <header>
+            <h1>@ViewData["Title"]</h1> <!-- Display the title in the main content -->
+        </header>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

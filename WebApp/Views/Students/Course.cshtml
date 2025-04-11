@@ -1,29 +1,28 @@
-﻿@model StudentsPageViewModel
+﻿@model CoursesPageViewModel
+
 <h1 class="h3 mb-2 text-black-800"> Tables</h1>
 <table>
     <tdead>
         <tr>
-           
-                <th>Sudent ID</th>
-                <th>last Name</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Age</th>
-                <th>Address</th>
-                <th>Year</th>
+
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Subject</th>
+            <th>Pre Req</th>
+            <th>Book</th>
+
         </tr>
     </tdead>
     <tbody>
-        @foreach(var row in Model.Students)
+        @foreach (var row in Model.Courses)
         {
             <tr>
-                <td>@row.SudentID</td>
-                <td>@row.LastName</td>
-                <td>@row.FirstName</td>
-                <td>@row.MiddleName</td>
-                <td>@row.Age</td>
-                <td>@row.Address</td>
-                <td>@row.Year</td>
+                <td>@row.CourseID</td>
+                <td>@row.CourseName</td>
+                <td>@row.Subject</td>
+                <td>@row.PreReq</td>
+                <td>@row.Book</td>
+
             </tr>
         }
     </tbody>
