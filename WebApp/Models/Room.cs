@@ -7,7 +7,7 @@ namespace WebApp.Models;
 
 public partial class Room
 {
-    public int RoomId { get; set; }
+    public int RoomID { get; set; }
 
     public int? Capasity { get; set; }
 

@@ -29,7 +29,6 @@ public partial class WebSysRGContext : DbContext
         {
             entity.ToTable("Course");
 
-            entity.Property(e => e.CourseId).HasColumnName("CourseID");
             entity.Property(e => e.Book)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -48,9 +47,7 @@ public partial class WebSysRGContext : DbContext
         {
             entity.ToTable("Room");
 
-            entity.Property(e => e.RoomId)
-                .ValueGeneratedNever()
-                .HasColumnName("RoomID");
+            entity.Property(e => e.RoomID).ValueGeneratedNever();
             entity.Property(e => e.RoomType)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -67,13 +64,11 @@ public partial class WebSysRGContext : DbContext
 
         modelBuilder.Entity<Student>(entity =>
         {
-            entity.HasKey(e => e.SudentId);
+            entity.HasKey(e => e.SudentID);
 
             entity.ToTable("Student");
 
-            entity.Property(e => e.SudentId)
-                .ValueGeneratedNever()
-                .HasColumnName("SudentID");
+            entity.Property(e => e.SudentID).ValueGeneratedNever();
             entity.Property(e => e.Address).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(50);
             entity.Property(e => e.LastName).HasMaxLength(50);
@@ -84,9 +79,7 @@ public partial class WebSysRGContext : DbContext
         {
             entity.ToTable("Teacher");
 
-            entity.Property(e => e.TeacherId)
-                .ValueGeneratedNever()
-                .HasColumnName("TeacherID");
+            entity.Property(e => e.TeacherID).ValueGeneratedNever();
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false);

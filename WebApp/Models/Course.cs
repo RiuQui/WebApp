@@ -7,7 +7,7 @@ namespace WebApp.Models;
 
 public partial class Course
 {
-    public int CourseId { get; set; }
+    public int CourseID { get; set; }
 
     public string CourseName { get; set; }
 

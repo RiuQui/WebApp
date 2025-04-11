@@ -7,7 +7,7 @@ namespace WebApp.Models;
 
 public partial class Student
 {
-    public int SudentId { get; set; }
+    public int SudentID { get; set; }
 
     public string LastName { get; set; }
 
